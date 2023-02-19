@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { ReactDOM } from "react";
 
 
 export default function AddNewTask(setTasks){
     const [task, setTask] = useState;
-    const  handleAddTask = (e)=>{
-        const newTask = {
+    
+    const  handleAddTask = (e)=>{ const newTask = {
             task: task,
             done: false
         }
-        setTask("")
+        console.log (newTask.task)
+        
         fetch(`https://todo-api-er.web.app/tasks`
         ,{method:"POST",
         headers:{
@@ -18,16 +20,17 @@ export default function AddNewTask(setTasks){
     })
         .then(res=>res.json())
         .then(setTasks)
+        .then(()=> (setTask("")))
         .catch(console.error)
 
     }
 
     return(
-        <container>
+        <div className="container">
          <form onSubmit={handleAddTask}>
             <label htmlFor="task"> New Task
             <input 
-            type="text"
+            type="text" //should i use textarea?
             name="task"
             value={task}
             onChange={setTask}></input>
@@ -35,7 +38,7 @@ export default function AddNewTask(setTasks){
             <input type="submit" value="Add New Task"   />
 
          </form>
-        </container>
+        </div>
 
     )
 }

@@ -17,7 +17,7 @@ export default function TasksList() {
         <article>
             <h4>LIST OF TASKS - tasklist component
             </h4>
-            <container>
+            <div className="container">
             {!tasks
                 ? <h3>You need create more tasks</h3>
                 : <section >
@@ -25,11 +25,11 @@ export default function TasksList() {
                     {tasks.map((item) => (<Task data={item} setTasks={setTasks}/>))}       
                 </section>
             }
-            </container>
-            <container>
+            </div>
+            <div className="container">
                 console.log("the new task is going to be here")
                 <AddNewTask setTasks ={setTasks}/>
-                 </container>
+                 </div>
         </article>
     )
 }
