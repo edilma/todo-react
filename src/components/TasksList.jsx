@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
+import AddNewTask from "./AddNewTask.jsx";
 import Task from "./Task.jsx"
 
 export default function TasksList() {
     const [tasks, setTasks] = useState();
+
     useEffect(() => {
         fetch('https://todo-api-er.web.app/tasks')
             .then(res => res.json())
@@ -24,6 +26,10 @@ export default function TasksList() {
                 </section>
             }
             </container>
+            <container>
+                console.log("the new task is going to be here")
+                <AddNewTask setTasks ={setTasks}/>
+                 </container>
         </article>
     )
 }

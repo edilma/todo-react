@@ -1,7 +1,7 @@
 export default function Task({data, setTasks}){
     //here i need props (task name, if it is done and the id)
     
-    const {taskId, taskName, done} = data;
+    const {taskId, task, done} = data;
     const handleDelete = ()=>{
         fetch(`https://todo-api-er.web.app/tasks/${taskId}`
         ,{method:"DELETE",
@@ -17,7 +17,7 @@ export default function Task({data, setTasks}){
     return(<>
     
         <div >
-            <p >{data.task}</p>
+            <p >{task}</p>
         </div>
         <div >
             <button onClick={handleDelete}>Delete</button>
