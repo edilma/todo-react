@@ -17,10 +17,10 @@ export default function Task({data, setTasks}){
     return(<>
     
         <div >
-            <p >{data.taskName}</p>
+            <p >{data.task}</p>
         </div>
         <div >
-            <button >Delete</button>
+            <button onClick={handleDelete}>Delete</button>
         </div>
        
         </>

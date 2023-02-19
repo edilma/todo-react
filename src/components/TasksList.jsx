@@ -20,11 +20,13 @@ export default function TasksList() {
                 ? <h3>You need create more tasks</h3>
                 : <section >
                     
-                    {tasks.map((item) => (<Task key={item.taskId}
-                        taskName={item.task} />))}       
+                    {tasks.map((item) => (<Task data={item} setTasks={setTasks}/>))}       
                 </section>
             }
             </container>
         </article>
     )
 }
+
+
+ 
