@@ -43,7 +43,7 @@ export default function Task({ data, setTasks }) {
             <label> Task Completed
             <input 
             type="checkbox" 
-            checked={done}
+            checked={!!done}
             onChange={handleCompleteTask} />
             </label>
 

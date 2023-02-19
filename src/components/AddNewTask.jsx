@@ -33,19 +33,19 @@ export default function AddNewTask({setTasks}) {
     }
 
     return(
-        <container>
+       
          <form onSubmit={handleAddTask}>
             <label htmlFor="task"> New Task
             <input 
             type="text"
             name="task"
-            value={task}
-            onChange={setTask}></input>
+            value={newTask}
+            onChange={e=> setNewTask(e.target.value)}></input>
             </label>
             <input type="submit" value="Add New Task" />
 
          </form>
-        </container>
+      
 
     )
 }
