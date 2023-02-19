@@ -4,7 +4,7 @@ import Task from "./Task.jsx"
 export default function TasksList() {
     const [tasks, setTasks] = useState();
     useEffect(() => {
-        fetch(' https://todo-api-er.web.app/tasks')
+        fetch('https://todo-api-er.web.app/tasks')
             .then(res => res.json())
             .then(setTasks)
             .catch(error => console.error)
@@ -21,7 +21,7 @@ export default function TasksList() {
                 : <section >
                     
                     {tasks.map((item) => (<Task key={item.taskId}
-                        name={item.task} />))}       
+                        taskName={item.task} />))}       
                 </section>
             }
             </container>
