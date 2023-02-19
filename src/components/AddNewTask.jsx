@@ -2,43 +2,50 @@ import { useState } from "react";
 import { ReactDOM } from "react";
 
 
-export default function AddNewTask(setTasks){
-    const [task, setTask] = useState;
+export default function AddNewTask({setTasks}) {
+    const [newTask, setNewTask] = useState("");
     
-    const  handleAddTask = (e)=>{ const newTask = {
-            task: task,
+    const handleAddTask = (e) => {
+        e.preventDefault();
+        const aNewTask = {
+            task: newTask,
             done: false
         }
-        console.log (newTask.task)
         
-        fetch(`https://todo-api-er.web.app/tasks`
-        ,{method:"POST",
-        headers:{
-        "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newTask)
-    })
-        .then(res=>res.json())
-        .then(setTasks)
-        .then(()=> (setTask("")))
-        .catch(console.error)
+        fetch(`https://todo-api-er.web.app/tasks/`
+            , {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(aNewTask)
+            })
+            .then(res => res.json())
+            .then((x) => {
+                setTasks(x) //updating the list of tasks
+                setNewTask("")// clearing the new task
+            })
+            .then(x => {
+                console.log("third then")
+            })
+            .catch(console.error)
 
     }
 
     return(
-        <div className="container">
+        <container>
          <form onSubmit={handleAddTask}>
             <label htmlFor="task"> New Task
             <input 
-            type="text" //should i use textarea?
+            type="text"
             name="task"
             value={task}
             onChange={setTask}></input>
             </label>
-            <input type="submit" value="Add New Task"   />
+            <input type="submit" value="Add New Task" />
 
          </form>
-        </div>
+        </container>
 
     )
 }
