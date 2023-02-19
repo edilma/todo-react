@@ -1,41 +1,50 @@
 import { useState } from "react";
 
 
-export default function AddNewTask(setTasks){
-    const [task, setTask] = useState;
-    const  handleAddTask = (e)=>{
-        const newTask = {
-            task: task,
+export default function AddNewTask({setTasks}) {
+    const [newTask, setNewTask] = useState("");
+    
+    const handleAddTask = (e) => {
+        e.preventDefault();
+        const aNewTask = {
+            task: newTask,
             done: false
         }
-        setTask("")
-        fetch(`https://todo-api-er.web.app/tasks`
-        ,{method:"POST",
-        headers:{
-        "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newTask)
-    })
-        .then(res=>res.json())
-        .then(setTasks)
-        .catch(console.error)
+        
+        fetch(`https://todo-api-er.web.app/tasks/`
+            , {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(aNewTask)
+            })
+            .then(res => res.json())
+            .then((x) => {
+                setTasks(x) //updating the list of tasks
+                setNewTask("")// clearing the new task
+            })
+            .then(x => {
+                console.log("third then")
+            })
+            .catch(console.error)
 
     }
 
-    return(
-        <container>
-         <form onSubmit={handleAddTask}>
-            <label htmlFor="task"> New Task
-            <input 
-            type="text"
-            name="task"
-            value={task}
-            onChange={setTask}></input>
-            </label>
-            <input type="submit" value="Add New Task"   />
+    return (
 
-         </form>
-        </container>
+        <form onSubmit={handleAddTask}>
+            <label htmlFor="task"> New Task
+                <input
+                    type="text"
+                    name="task"
+                    value={newTask}
+                    onChange={(e) => { setNewTask(e.target.value) }}></input>
+            </label>
+            <input type="submit" value="Add New Task" />
+
+        </form>
+
 
     )
 }
