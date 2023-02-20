@@ -1,10 +1,63 @@
-.container{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  column-gap: normal;
+
+
+/* classes for the Task component */
+.task-card{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 80px;
+  padding-top: 20px;
+  justify-content: flex-start;
+
+
+}
+
+.task-description{
+  font-variant: normal;
+  width: 60%;
+  align-self: auto;
+  flex: 0 1 auto;
+}
+
+.button-delete{
+  align-self: center;
+  flex: 0 1 20%
+
+}
+
+.task-done-checkbox{
+  align-self: center;
+  flex: 0 1 20%
 }
 
 
+
+/* .App{
+  display: flex;
+  flex-direction: column;
+  border: 5px;
+  border-color: black;
+}
+
+.processes-display{
+  display: flex;
+  flex-direction:column;
+  border: 8px;
+  border-color: rgb(128, 19, 19);
+
+}
+
+.create-new-process{
+display: flex;
+
+} */
+
+
+
+
+
+
+/* 
 
 .task-flex-container {
   display: -ms-flexbox;
@@ -50,4 +103,4 @@
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
-  }
+  } */

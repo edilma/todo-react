@@ -1,18 +1,23 @@
 
 import { useState } from 'react';
-import './App.css';
 import AddNewTask from './components/AddNewTask.jsx';
 import TasksList from './components/TasksList.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css';
 
 
 function App() {
-  const[tasks, setTasks] = useState();
+  const [tasks, setTasks] = useState();
 
-  return(
+  return (
     <div className="App">
-     <h1>Hello</h1>
-      <TasksList tasks={tasks}  setTasks={setTasks}/>
-      <AddNewTask setTasks={setTasks}/>
+      <h1>MANUFACTURING PROCESS CHECK LIST </h1>
+      <section className='processes-display'>
+        <TasksList tasks={tasks} setTasks={setTasks} />
+      </section>
+      <section className='create-new-process'>
+        <AddNewTask setTasks={setTasks} />
+      </section>
     </div>
   );
 }

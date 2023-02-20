@@ -1,3 +1,7 @@
+import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
+
+
 export default function Task({ data, setTasks }) {
     //here i need props (task name, if it is done and the id)
 
@@ -16,15 +20,15 @@ export default function Task({ data, setTasks }) {
             .catch(console.error)
     }
 
-    const handleCompleteTask = ()=>{
-        
+    const handleCompleteTask = () => {
+
         fetch(`https://todo-api-er.web.app/tasks/${taskId}`
             , {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({done:!!!done})
+                body: JSON.stringify({ done: !!!done })
             }
         )
             .then(res => res.json())
@@ -34,21 +38,22 @@ export default function Task({ data, setTasks }) {
     }
 
     return (<>
-
-        <div >
-            {task}
-        </div>
-        <div >
-            <button onClick={handleDelete}>Delete</button>
-            <label> Task Completed
-            <input 
-            type="checkbox" 
-            checked={!!done}
-            onChange={handleCompleteTask} />
-            </label>
-
-        </div>
-
+        <section className="task-card">
+            <div className="task-description">
+                {task}
+            </div>
+            <div className="button-delete">
+                <Button variant="primary" size="large" onClick={handleDelete}>DELETE</Button>
+            </div>
+            <div className="task-done-checkbox">
+                <InputGroup.Checkbox
+                    type="checkbox"
+                    checked={done}
+                    onChange={handleCompleteTask}
+                    aria-label="PROCESS COMPLETED"
+                />
+            </div>
+        </section>
     </>
     )
 
