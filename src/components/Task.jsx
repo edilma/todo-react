@@ -1,5 +1,9 @@
+import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 
 export default function Task({ data, setTasks }) {
@@ -38,22 +42,34 @@ export default function Task({ data, setTasks }) {
     }
 
     return (<>
-        <section className="task-card">
-            <div className="task-description">
-                {task}
-            </div>
-            <div className="button-delete">
-                <Button variant="primary" size="large" onClick={handleDelete}>DELETE</Button>
-            </div>
-            <div className="task-done-checkbox">
-                <InputGroup.Checkbox
-                    type="checkbox"
-                    checked={done}
-                    onChange={handleCompleteTask}
-                    aria-label="PROCESS COMPLETED"
-                />
-            </div>
-        </section>
+        <Container className="SingleTask">
+            <Row className="task-card">
+                <Col className="task-description">
+                    {task}
+                </Col>
+                <Col md="auto" className="button-delete">
+
+                    <Button variant="primary"
+                        size="large"
+                        onClick={handleDelete}>DELETE</Button>
+
+                </Col>
+                <Col className="task-done-checkbox" onClick={handleCompleteTask}>
+                    <InputGroup size="sm" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm">Done?</InputGroup.Text>
+                        <InputGroup.Checkbox
+                        type="checkbox"
+                        checked={done}
+                        
+                        label="PROCESS COMPLETED"
+                    />
+                    </InputGroup>
+                    
+
+                </Col>
+            </Row>
+
+        </Container>
     </>
     )
 
